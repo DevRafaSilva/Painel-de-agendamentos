@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/code/src/output.css">
+  <meta name="description" content="Agendamentos">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento</title>
+</head>
+
+
+<body class="bg-[#232225] grid max-sm:grid-cols-[1fr] grid-cols-[1fr,2fr]   gap-8">
+  <main class="font-sans m-3 bg-[#2E2C30] rounded-xl py-4 px-8">
+    <div>
+      <h1 class="text-[#F5F4F5] text-2xl">Agende um atendimento</h1>
+      <p class="my-3 text-[#98959D]">Selecione data, horário e informe o nome do cliente para criar o agendamento</p>
+      <label for="Data" class="text-[#f5f4f5]">
+        Data
+      </label>
+      <input data-input class="block my-3 bg-[#3E3C41] text-[#f5f4f5] rounded-lg px-5 py-2" type="date" name="Data" id="Data" aria-label="Selecione uma data">
+
+      <div class="my-6">
+        <h2 class="text-[#f5f4f5]">Horários</h2>
+        <span class="text-[#98959D] my-2 inline-block">Manhã</span>
+        <ul data-horario-desabilitado class="*:bg-[#3E3C41] *:text-[#B2AFB6] *:py-2 *:px-4 *:rounded-lg flex gap-3">
+          <li data-horario="09:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>09:00</p>
+          </li>
+          <li data-horario="10:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>10:00</p>
+          </li>
+          <li data-horario="11:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>11:00</p>
+          </li>
+          <li data-horario="12:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>12:00</p>
+          </li>
+        </ul>
+        <span class="text-[#98959D] my-2 inline-block">Tarde</span>
+        <ul data-horario-desabilitado class="*:bg-[#3E3C41] *:text-[#B2AFB6]  *:py-2 *:px-4 *:rounded-lg flex flex-wrap gap-3">
+          <li data-horario="13:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>13:00</p>
+          </li>
+          <li data-horario="14:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>14:00</p>
+          </li>
+          <li data-horario="15:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>15:00</p>
+          </li>
+          <li data-horario="16:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>16:00</p>
+          </li>
+          <li data-horario="17:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>17:00</p>
+          </li>
+          <li data-horario="18:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>18:00</p>
+          </li>
+        </ul>
+        <span class="text-[#98959D] my-2 inline-block">Noite</span>
+        <ul data-horario-desabilitado class="*:bg-[#3E3C41] *:text-[#B2AFB6] *:py-2 *:px-4 *:rounded-lg flex gap-3">
+          <li data-horario="19:00" class="hover:text-[#b8952E] hover:outline hover:outline-[#B8952E]">
+            <p>19:00</p>
+          </li>
+          <li data-horario="20:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>20:00</p>
+          </li>
+          <li data-horario="21:00" class="hover:text-[#B8952E] hover:outline hover:outline-[#B8952E]">
+            <p>21:00</p>
+          </li>
+        </ul>
+        <div class="my-4 relative grid">
+          <h2 class="text-[#f5f4f5]">Cliente</h2>
+          <div class="grid">
+            <img width="15px" height="15px" class="absolute top-[50px] left-2" src="/code/src/img/pessoa.svg" alt="">
+            <input data-nome-cliente placeholder="Nome do cliente" class=" rounded-lg my-3 border-[2px] border-[#3E3C41] py-2 px-6 bg-transparent" type="text" name="nome" id="nome">
+            <button data-enviar class="uppercase bg-[#B8952E] text-black px-8 font-medium rounded-lg py-4">Agendar</button>
+          </div>
+          <span data-span-erro class="text-red-800   my-4 hidden">Dados inválido</span>
+        </div>
+
+      </div>
+  </main>
+  <article class="font-sans p-4">
+    <div class="m-3 flex flex-wrap justify-between">
+      <div>
+        <h1 class="text-[#f5f4f5] text-2xl">Sua agenda</h1>
+        <p class="text-[#98959D] my-3">Consulte os seus cortes de cabelo agendados por dia</p>
+      </div>
+      <input data-horarios-marcados class="block my-3 bg-[#3E3C41] text-[#f5f4f5] rounded-lg px-5 py-2" type="date" name="data-marcar" id="data-marcar">
+    </div>
+    <div class=" mt-4 rounded-lg border border-[#2E2C30]">
+      <div class="flex  px-5 py-3   justify-between border-b-[1px] border-b-[#2E2C30]">
+        <div class="flex gap-3">
+          <img width="20px" height="20px" src="/code/src/img/manha.svg" alt="Icone manhã">
+          <span class="text-[#98959D]">Manhã</span>
+        </div>
+        <p class="text-[#7A767F]">09h-12h</p>
+      </div>
+      <div data-horario-manha>
+
+      </div>
+    </div>
+    <div class=" mt-4 rounded-lg border border-[#2E2C30]">
+      <div class="flex  px-5 py-3   justify-between border-b-[1px] border-b-[#2E2C30]">
+        <div class="flex gap-3">
+          <img width="20px" height="20px" src="/code/src/img/tarde.svg" alt="Icone tarde">
+          <span class="text-[#98959D]">Tarde</span>
+        </div>
+        <p class="text-[#7A767F]">13-18h</p>
+      </div>
+      <div data-horario-tarde>
+
+      </div>
+    </div>
+    <div class=" mt-4 rounded-lg border border-[#2E2C30]">
+      <div class="flex  px-5 py-3   justify-between border-b-[1px] border-b-[#2E2C30]">
+        <div class="flex gap-3">
+          <img width="20px" height="20px" src="/code/src/img/tarde.svg" alt="Icone tarde">
+          <span class="text-[#98959D]">Noite</span>
+        </div>
+        <p class="text-[#7A767F]">19-21h</p>
+      </div>
+      <div data-horario-noite>
+
+      </div>
+    </div>
+  </article>
+
+  <script type="module" src="/code/src/script/script.js"></script>
+</body>
+
+</html>
