@@ -65,12 +65,11 @@ export default class HtmlAgendamento {
     this.concatenarData = numeroDia + ' ' + numeroMes + ' ' + anoAtual;
   }
 
-  criarHorarioManha() {
-    let horarioFiltrada = this.horarioManhaPegar.filter(({ dadosArray }) => {
+  colocarNoHtmlAgendamento(elementoAppend, horarioAgendamento) {
+    let horarioFiltrada = horarioAgendamento.filter(({ dadosArray }) => {
       return dadosArray.data === this.concatenarData;
     });
-
-    this.horarioManhaHtml.innerHTML = '';
+    elementoAppend.innerHTML = '';
     horarioFiltrada.forEach(({ dadosArray }) => {
       let criarDiv = document.createElement('div');
       criarDiv.innerHTML = '';
@@ -90,64 +89,23 @@ export default class HtmlAgendamento {
       <p class="text-[#3E3C41]">${dadosArray.horario} h</p>
 
       `;
-      this.horarioManhaHtml.appendChild(criarDiv);
+      elementoAppend.appendChild(criarDiv);
     });
   }
-  criarHorarioTarde() {
-    let horarioFiltrada = this.horarioTardePegar.filter(({ dadosArray }) => {
-      return dadosArray.data === this.concatenarData;
-    });
 
-    this.horarioTardeHtml.innerHTML = '';
-    horarioFiltrada.forEach(({ dadosArray }) => {
-      let criarDiv = document.createElement('div');
-      criarDiv.innerHTML = '';
-      criarDiv.classList.add(
-        'py-2',
-        'px-6',
-        'border-b',
-        'border-b-[#2E2C30]',
-        'text-[#f5f5f7]',
-        'flex',
-        'justify-between',
-      );
-
-      criarDiv.innerHTML = `
-
-      <h1>${dadosArray.nome}</h1>
-      <p class="text-[#3E3C41]">${dadosArray.horario} h</p>
-
-      `;
-      this.horarioTardeHtml.appendChild(criarDiv);
-    });
-  }
-  criarHorarioNoite() {
-    let horarioFiltrada = this.horarioNoitePegar.filter(({ dadosArray }) => {
-      return dadosArray.data === this.concatenarData;
-    });
-
-    this.horarioNoiteHtml.innerHTML = '';
-    horarioFiltrada.forEach(({ dadosArray }) => {
-      let criarDiv = document.createElement('div');
-      criarDiv.innerHTML = '';
-      criarDiv.classList.add(
-        'py-2',
-        'px-6',
-        'border-b',
-        'border-b-[#2E2C30]',
-        'text-[#f5f5f7]',
-        'flex',
-        'justify-between',
-      );
-
-      criarDiv.innerHTML = `
-
-      <h1>${dadosArray.nome}</h1>
-      <p class="text-[#3E3C41]">${dadosArray.horario} h</p>
-
-      `;
-      this.horarioNoiteHtml.appendChild(criarDiv);
-    });
+  iniciariHtmlDoAgendamento() {
+    this.colocarNoHtmlAgendamento(
+      this.horarioManhaHtml,
+      this.horarioManhaPegar,
+    );
+    this.colocarNoHtmlAgendamento(
+      this.horarioNoiteHtml,
+      this.horarioNoitePegar,
+    );
+    this.colocarNoHtmlAgendamento(
+      this.horarioTardeHtml,
+      this.horarioTardePegar,
+    );
   }
 
   init() {
@@ -160,9 +118,7 @@ export default class HtmlAgendamento {
       this.dataInoutFiltrar.addEventListener('change', () => {
         this.filtrarHorarioMarcado();
         this.filtrarHorarios();
-        this.criarHorarioManha();
-        this.criarHorarioTarde();
-        this.criarHorarioNoite();
+        this.iniciariHtmlDoAgendamento();
         this.concatenarDataFormatada();
       });
     }
